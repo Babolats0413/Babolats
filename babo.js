@@ -1,38 +1,24 @@
-const cartItems = [];
-const cartList = document.getElementById('cart-items');
-const cartCount = document.getElementById('cart-count');
-const cartTotal = document.getElementById('cart-total');
-const cartSection = document.getElementById('cart');
-const closeCartBtn = document.getElementById('close-cart');
+const images = document.querySelectorAll(".slider-image");
+const prevButton = document.querySelector(".prev-button");
+const nextButton = document.querySelector(".next-button");
 
-document.querySelectorAll('.add-to-cart').forEach(button => {
-  button.addEventListener('click', () => {
-    const name = button.getAttribute('data-name');
-    const price = parseFloat(button.getAttribute('data-price'));
-    cartItems.push({ name, price });
-    updateCart();
-  });
-});
+let currentIndex = 0;
 
-function updateCart() {
-  cartList.innerHTML = '';
-  let total = 0;
-  cartItems.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = `${item.name} - ₱${item.price.toFixed(2)}`;
-    cartList.appendChild(li);
-    total += item.price;
+function showImage(index) {
+  images.forEach((img, i) => {
+    img.classList.toggle("active", i === index);
   });
-  cartCount.textContent = cartItems.length;
-  cartTotal.textContent = total.toFixed(2);
 }
 
-// Toggle Cart Slide
-document.getElementById('cart-btn').addEventListener('click', () => {
-  cartSection.classList.add('open');
+nextButton.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
 });
 
-// Close Cart
-closeCartBtn.addEventListener('click', () => {
-  cartSection.classList.remove('open');
+prevButton.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
 });
+
+// Initialize slider
+showImage(currentIndex);
