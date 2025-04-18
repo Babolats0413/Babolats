@@ -6,6 +6,11 @@ body {
     color: #F6F6F6;
   }
   
+section {
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
   header {
     background-color: #3F7D58;
     color: #EFEFEF;
@@ -76,3 +81,58 @@ body {
     margin-bottom: 10px;
   }
   
+
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+  }
+  
+  .slider-image {
+    width: 100%;
+    display: none; /* Hide all images initially */
+  }
+  
+  .slider-image.active {
+    display: block; /* Show only the active image */
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+  }
+  
+  .prev-button {
+    left: 10px;
+  }
+  
+  .next-button {
+    right: 10px;
+  }
+
+  .card-wrapper {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100vh; /* Full height to push content to the center */
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .babo-pics {
+    padding: 40px;
+    text-align: center;
+  }
